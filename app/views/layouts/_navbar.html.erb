@@ -1,0 +1,24 @@
+<nav class="bg-blue-500 p-2 mt-0 mb-2 fixed w-full z-10 top-0">
+  <div class="container mx-auto flex flex-wrap items-center">
+    <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+      <%= link_to 'ReciboApp', root_path, class: "text-white no-underline hover:text-white hover:no-underline" %>
+    </div>
+
+    <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+      <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+        <% if user_signed_in? %>
+            <li class="mr-3">
+                <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "inline-block text-blue-500 no-underline border-b border-blue-600 hover:text-blue-900 hover:border-blue-900" %>
+            </li>
+        <% else %>
+            <li class="mr-3">
+                <%= link_to "Iniciar sesión", new_user_session_path, class: "inline-block py-2 px-4 text-white no-underline" %>
+            </li>
+            <li class="mr-3">
+                <%= link_to "Registrarse", new_user_registration_path, class: "inline-block text-blue-500 no-underline border-b border-blue-600 hover:text-blue-900 hover:border-blue-900" %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

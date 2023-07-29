@@ -1,0 +1,31 @@
+<div class="container mx-auto px-4 mt-20">
+  <h1 class="text-4xl font-bold mb-4">Editar Recibo</h1>
+
+  <%= form_with(model: @receipt, local: true) do |form| %>
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+
+      <% if @receipt.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@receipt.errors.count, "error") %> prohibited this receipt from being saved:</h2>
+            <ul>
+                <% @receipt.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+        <% end %>
+      <div class="mb-6">
+        <label class="block text-grey-darker text-sm font-bold mb-2" for="image">
+          Imagen:
+        </label>
+        <%= form.file_field :image, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight' %>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <%= form.submit 'Actualizar Recibo', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+        <%= link_to 'Cancelar', receipt_path(@receipt), class: 'inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800' %>
+      </div>
+    </div>
+  <% end %>
+  <%= link_to 'Volver', receipts_path, class: 'text-blue-500' %>
+</div>

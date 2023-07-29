@@ -1,0 +1,44 @@
+<div class="container mx-auto px-4 mt-20">
+  <h1 class="text-4xl font-bold mb-4">Receipt #<%= @receipt.id %></h1>
+
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+    <div class="mb-4">
+      <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
+        Usuario:
+      </label>
+      <p class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" id="username">
+        <%= @receipt.user.email %>
+      </p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-grey-darker text-sm font-bold mb-2" for="preview">
+        Preview:
+      </label>
+      <p class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" id="preview">
+        <% if @receipt.image.file.extension.downcase.in?(%w[jpg jpeg png]) %>
+            <%= image_tag @receipt.image.url %>
+        <% elsif @receipt.image.file.extension.downcase == 'pdf' %>
+            <embed src="<%= @receipt.image.url %>" type="application/pdf" width="100%" height="600px" />
+        <% else %>
+            <p>Formato de archivo no soportado.</p>
+        <% end %>
+      </p>
+    </div>
+
+    <div class="mb-6">
+      <label class="block text-grey-darker text-sm font-bold mb-2" for="date">
+        Fecha:
+      </label>
+      <p class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" id="date">
+        <%= @receipt.created_at.to_s(:short) %>
+      </p>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <%= link_to 'Editar', edit_receipt_path(@receipt), class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+      <%= link_to 'Eliminar', @receipt, method: :delete, data: { turbo_method: :delete }, class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded' %>
+      <%= link_to 'Volver', receipts_path, class: 'text-blue-500' %>
+    </div>
+  </div>
+</div>

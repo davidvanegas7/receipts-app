@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['APPLICATION_DATABASE_USER'] %>
+  password: <%= ENV['APPLICATION_DATABASE_PASSWORD'] %>
+  host: localhost
+
+development:
+  <<: *default
+  database: my_recepts_database_development
+
+test:
+  <<: *default
+  database: my_recepts_database_test
+
+production:
+  <<: *default
+  database: my_recepts_database_production
+  username: <%= ENV['APPLICATION_DATABASE_USER'] %>
+  password: <%= ENV['APPLICATION_DATABASE_PASSWORD'] %>
