@@ -8,14 +8,14 @@
       <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
         <% if user_signed_in? %>
             <li class="mr-3">
-                <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "inline-block text-blue-500 no-underline border-b border-blue-600 hover:text-blue-900 hover:border-blue-900" %>
+                <%= link_to 'Cerrar sesión', destroy_user_session_path, data: { turbo_method: :delete }, class: 'inline-block text-black-500 no-underline border-b border-blue-600 hover:text-blue-900 hover:border-blue-900' %>
             </li>
         <% else %>
             <li class="mr-3">
                 <%= link_to "Iniciar sesión", new_user_session_path, class: "inline-block py-2 px-4 text-white no-underline" %>
             </li>
             <li class="mr-3">
-                <%= link_to "Registrarse", new_user_registration_path, class: "inline-block text-blue-500 no-underline border-b border-blue-600 hover:text-blue-900 hover:border-blue-900" %>
+                <%= link_to "Registrarse", new_user_registration_path, class: "inline-block text-black-500 no-underline border-b border-blue-600 hover:text-blue-900 hover:border-blue-900" %>
             </li>
         <% end %>
       </ul>

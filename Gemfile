@@ -78,3 +78,4 @@ gem 'devise'
 gem 'mysql2'
 
 gem "tailwindcss-rails", "~> 2.0"
+gem "foreman", github: 'ddollar/foreman'

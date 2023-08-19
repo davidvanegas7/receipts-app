@@ -11,3 +11,19 @@
 }
 
 */
+
+.alert {
+  color: white;
+  background: red;
+  position: absolute;
+  top: 100px;
+  left: 100px
+}
+
+.notice {
+  color: white;
+  background: green;
+  position: absolute;
+  top: 100px;
+  left: 100px
+}
